@@ -56,7 +56,7 @@
 <script src="config.js"></script>
 <script>
 let state={people:[],expenses:[],incomes:[],categories:[]};
-let cloudRevision=0,cloudReady=false,cloudSaving=false;
+let cloudRevision=0,cloudReady=false,cloudSaving=false,cloudRefreshing=false;
 let settlementRequested=false;
 let editingExpenseId=null;
 const ledgerCacheKey='spain-trip-ledger-cache-v1';
@@ -67,8 +67,8 @@ function formatAmountInput(input){const raw=input.value.replace(/[^\d.]/g,'');if
 function syncStatus(message){$('#syncStatus').textContent=message}
 function cacheLedger(){try{localStorage.setItem(ledgerCacheKey,JSON.stringify({state,revision:cloudRevision}))}catch{}}
 function loadCachedLedger(){try{const cached=JSON.parse(localStorage.getItem(ledgerCacheKey)||'null');if(!cached||!Array.isArray(cached.state?.people)||!Array.isArray(cached.state?.expenses)||!Array.isArray(cached.state?.incomes))return false;state=cached.state;cloudRevision=Number(cached.revision||0);syncStatus('顯示上次同步資料 · 正在更新');return true}catch{return false}}
-async function refreshCloud(){if(!window.SPREADSHEET_API_URL){syncStatus('尚未設定 Google Sheets 連線');return}if(cloudSaving)return;try{const response=await fetch(window.SPREADSHEET_API_URL,{cache:'no-store'});if(!response.ok)throw new Error('無法連線');const payload=await response.json();if(!cloudReady||payload.revision!==cloudRevision){state=payload.state;cloudRevision=payload.revision;settlementRequested=false;cacheLedger();render()}cloudReady=true;syncStatus('已同步 · 所有旅伴共用')}catch{syncStatus('連線失敗，請稍後重新整理')}}
-function save(){if(!cloudReady){syncStatus('帳本尚未連線，請稍後重試');return}settlementRequested=false;render();cloudSaving=true;syncStatus('儲存到共用帳本中…');fetch(window.SPREADSHEET_API_URL,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({state,revision:cloudRevision})}).then(async response=>{if(!response.ok){const payload=await response.json();throw new Error(payload.error||'儲存失敗')}const payload=await response.json();if(payload.error)throw new Error(payload.error);cloudRevision=payload.revision;cacheLedger();cloudSaving=false;syncStatus('已同步 · 所有旅伴共用')}).catch(async error=>{cloudSaving=false;syncStatus(error.message);await refreshCloud();alert(error.message)})}
+async function refreshCloud(){if(!window.SPREADSHEET_API_URL){syncStatus('尚未設定 Google Sheets 連線');return}if(cloudSaving||cloudRefreshing)return;cloudRefreshing=true;try{const response=await fetch(window.SPREADSHEET_API_URL,{cache:'no-store'});if(!response.ok)throw new Error('無法連線');const payload=await response.json();if(!cloudReady||payload.revision!==cloudRevision){state=payload.state;cloudRevision=payload.revision;settlementRequested=false;cacheLedger();render()}cloudReady=true;syncStatus('已同步 · 所有旅伴共用')}catch{syncStatus('連線失敗，請稍後重新整理')}finally{cloudRefreshing=false}}
+function save(){if(!cloudReady){syncStatus('帳本尚未連線，請稍後重試');return}settlementRequested=false;render();cacheLedger();cloudSaving=true;syncStatus('畫面已更新 · 正在同步共用帳本…');fetch(window.SPREADSHEET_API_URL,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({state,revision:cloudRevision})}).then(async response=>{if(!response.ok){const payload=await response.json();throw new Error(payload.error||'儲存失敗')}const payload=await response.json();if(payload.error)throw new Error(payload.error);cloudRevision=payload.revision;cacheLedger();cloudSaving=false;syncStatus('已同步 · 所有旅伴共用')}).catch(async error=>{cloudSaving=false;syncStatus(error.message);await refreshCloud();alert(error.message)})}
 function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
 function addPerson(name,note=''){name=name.trim();if(!name)return;if(state.people.some(p=>p.name.toLowerCase()===name.toLowerCase()))return alert('這個名字已經存在');state.people.push({id:crypto.randomUUID(),name,note:note.trim()});save()}
 function expensePayments(expense){return Array.isArray(expense.payments)&&expense.payments.length?expense.payments:[{personId:expense.payer,amount:expense.amount}]}
@@ -158,7 +158,8 @@ $('#exportStatsBtn').addEventListener('click',()=>{const blob=new Blob([buildSta
 loadCachedLedger();
 render();
 refreshCloud();
-setInterval(refreshCloud,5000);
+setInterval(()=>{if(!document.hidden)refreshCloud()},15000);
+document.addEventListener('visibilitychange',()=>{if(!document.hidden)refreshCloud()});
 </script>
 </body>
 </html>
