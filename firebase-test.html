@@ -39,6 +39,14 @@
       .expense,.detail-entry,.person-card,.category-row,.transfer{content-visibility:auto;contain-intrinsic-size:auto 92px;contain:layout paint style}
       .settlement-screen{overscroll-behavior:contain}
     }
+  
+    /* Desktop fine tuning: small lists scroll more evenly when already laid out. */
+    @media(min-width:781px){
+      body{background:#fff9ee}
+      .card{box-shadow:0 3px 12px rgba(105,50,32,.055)}
+      .hero{box-shadow:0 5px 16px rgba(70,34,25,.13)}
+      .expense,.detail-entry,.person-card,.category-row,.transfer{content-visibility:visible;contain:none}
+    }
   </style>
 </head>
 <body>
