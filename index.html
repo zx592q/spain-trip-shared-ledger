@@ -69,6 +69,15 @@
       .split-detail,.meta{overflow-wrap:anywhere}
       .category-row{grid-template-columns:minmax(0,1fr) auto}.category-row strong{white-space:nowrap}
     }
+  
+    /* Keep the preferred two-person mobile settlement layout with compact whole-dollar values. */
+    @media(max-width:600px){
+      .summary-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px}
+      .balance,.person-balance{padding:12px 10px}
+      .person-breakdown{font-size:12px;line-height:1.45}
+      .balance .num{font-size:clamp(16px,4.7vw,20px);line-height:1.2;white-space:nowrap;overflow-wrap:normal;letter-spacing:-.35px}
+      .detail-hint{font-size:12px;white-space:nowrap}
+    }
   </style>
 </head>
 <body>
@@ -116,7 +125,7 @@ let settlementRequested=false;
 let editingExpenseId=null;
 const ledgerCacheKey='spain-trip-ledger-firebase-test-v1';
 const defaultCategories=['早餐','午餐','晚餐','餐飲','交通','住宿','景點門票','購物','其他'];
-const $=s=>document.querySelector(s), money=n=>new Intl.NumberFormat('zh-TW',{style:'currency',currency:'TWD',maximumFractionDigits:2}).format(n);
+const $=s=>document.querySelector(s), money=n=>new Intl.NumberFormat('zh-TW',{style:'currency',currency:'TWD',maximumFractionDigits:0}).format(n);
 function parseAmount(value){return Number(String(value||'').replace(/,/g,''))}
 function formatAmountInput(input){const raw=input.value.replace(/[^\d.]/g,'');if(!raw){input.value='';return}const parts=raw.split('.'),whole=parts[0].replace(/^0+(?=\d)/,'')||'0',decimal=parts.slice(1).join('').slice(0,2);input.value=whole.replace(/\B(?=(\d{3})+(?!\d))/g,',')+(parts.length>1?'.'+decimal:'')}
 function syncStatus(message){$('#syncStatus').textContent=message}
