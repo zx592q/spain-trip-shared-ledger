@@ -50,6 +50,25 @@
   
     .expense-list-heading{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}.expense-list-title{display:flex;align-items:center;gap:10px;min-width:0}.expense-list-title h2{margin-bottom:0;white-space:nowrap}.expense-filter-label{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}.expense-list-title select{width:auto;min-width:130px;padding:7px 34px 7px 10px;font-size:14px}
     @media(max-width:520px){.expense-list-heading{align-items:center}.expense-list-title{gap:7px}.expense-list-title select{min-width:112px;max-width:145px;padding:7px 28px 7px 8px;font-size:13px}.expense-list-heading .total{white-space:nowrap}.expense-list-heading .total b{font-size:16px}}
+  
+    /* Prevent mobile cards and currency values from being clipped. */
+    @media(max-width:600px){
+      .settlement-dialog{max-width:100%;overflow-x:hidden}
+      .summary-grid{grid-template-columns:minmax(0,1fr)!important}
+      .balance,.person-balance{min-width:0;max-width:100%;overflow:hidden}
+      .balance .num{max-width:100%;font-size:clamp(19px,6.4vw,25px);line-height:1.25;white-space:normal;overflow-wrap:anywhere}
+      .person-breakdown{min-width:0}.person-breakdown span{white-space:normal;overflow-wrap:anywhere}
+      .expense-list-heading{display:grid;grid-template-columns:minmax(0,1fr);gap:10px;align-items:stretch}
+      .expense-list-title{display:grid;grid-template-columns:auto minmax(0,1fr);width:100%;gap:8px}
+      .expense-list-title select{width:100%;min-width:0;max-width:none}
+      .expense-list-heading .total{text-align:right;white-space:normal}
+      .expense{grid-template-columns:minmax(0,1fr);gap:8px}
+      .expense>div{min-width:0}
+      .expense .amount{display:flex;align-items:center;justify-content:flex-end;flex-wrap:wrap;gap:7px;max-width:100%;font-size:18px;overflow-wrap:anywhere}
+      .expense .amount button{display:inline-block;margin:0}
+      .split-detail,.meta{overflow-wrap:anywhere}
+      .category-row{grid-template-columns:minmax(0,1fr) auto}.category-row strong{white-space:nowrap}
+    }
   </style>
 </head>
 <body>
