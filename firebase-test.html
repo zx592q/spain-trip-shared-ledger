@@ -85,7 +85,7 @@
   
     .itinerary-notice{display:grid;gap:5px;background:#fff0d1;border-radius:14px;padding:15px;margin-bottom:16px}.itinerary-notice strong{color:var(--accent)}.pdf-day{display:grid;grid-template-columns:86px minmax(0,1fr);gap:14px;padding:18px 0;border-bottom:1px solid var(--line)}.pdf-day:last-child{border-bottom:0}.pdf-day-date{display:flex;flex-direction:column;gap:4px;color:var(--accent)}.pdf-day-date span{font-size:12px;font-weight:800;letter-spacing:.06em}.pdf-day-date strong{font-size:22px}.pdf-day-body h3{margin:0 0 8px;font-size:17px}.pdf-day-body ul{margin:0 0 7px;padding-left:20px;line-height:1.65}.pdf-day-body li{margin-bottom:3px}.pdf-day-body .meta{font-size:12px}@media(max-width:520px){.pdf-day{grid-template-columns:1fr;gap:6px}.pdf-day-date{flex-direction:row;align-items:baseline;gap:9px}}
       .test-banner{display:flex;align-items:center;gap:12px;padding:12px 16px;margin:0 0 18px;border:1px solid #e4a819;border-radius:12px;background:#fff0cf;color:#573b15}.test-banner strong{white-space:nowrap}@media(max-width:600px){.test-banner{align-items:flex-start;flex-direction:column;gap:4px}}
-    .pdf-view-dialog{max-width:1100px}.pdf-pick{display:inline-flex;align-items:center;padding:12px 18px;border-radius:12px;background:var(--accent);color:#fff;font-weight:800;cursor:pointer}.pdf-pick input{position:absolute;width:1px;height:1px;opacity:0}.pdf-pick:focus-within{outline:3px solid var(--accent2);outline-offset:3px}.pdf-open-link{display:inline-block;margin:12px 0 0 12px;color:var(--accent);font-weight:800}.pdf-frame-wrap{margin-top:16px;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff}.pdf-frame-wrap iframe{display:block;width:100%;height:min(78vh,900px);border:0}.pdf-summary{margin-top:20px}.pdf-summary summary{cursor:pointer;font-weight:800}@media(max-width:600px){.pdf-open-link{display:block;margin:12px 0}.pdf-frame-wrap iframe{height:70vh}.pdf-view-dialog{padding:20px}}
+    .pdf-mode-switch{display:flex;gap:8px;margin-top:16px}.book-view{margin-top:16px}.book-toolbar{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;margin-bottom:14px}.book-toolbar button{white-space:nowrap}.book-spread{display:flex;justify-content:center;align-items:flex-start;gap:4px;perspective:1600px}.book-spread canvas[hidden]{display:none!important}.book-spread canvas{display:block;min-width:0;max-width:calc(50% - 2px);height:auto;background:#fff;box-shadow:0 12px 25px rgba(40,20,10,.18);transform-origin:left center}.book-spread.turning canvas{animation:pageTurn .35s ease}@keyframes pageTurn{50%{transform:rotateY(-12deg);opacity:.75}100%{transform:rotateY(0);opacity:1}}@media(max-width:700px){.book-spread canvas{max-width:100%}#bookRight{display:none}}.pdf-view-dialog{max-width:1100px}.pdf-pick{display:inline-flex;align-items:center;padding:12px 18px;border-radius:12px;background:var(--accent);color:#fff;font-weight:800;cursor:pointer}.pdf-pick input{position:absolute;width:1px;height:1px;opacity:0}.pdf-pick:focus-within{outline:3px solid var(--accent2);outline-offset:3px}.pdf-open-link{display:inline-block;margin:12px 0 0 12px;color:var(--accent);font-weight:800}.pdf-frame-wrap{margin-top:16px;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff}.pdf-frame-wrap iframe{display:block;width:100%;height:min(78vh,900px);border:0}.pdf-summary{margin-top:20px}.pdf-summary summary{cursor:pointer;font-weight:800}@media(max-width:600px){.pdf-open-link{display:block;margin:12px 0}.pdf-frame-wrap iframe{height:70vh}.pdf-view-dialog{padding:20px}}
   </style>
 </head>
 <body>
@@ -121,7 +121,7 @@
     </section>
   </div>
 </main>
-<section class="settlement-screen" id="itineraryScreen" role="dialog" aria-modal="true" aria-labelledby="itineraryTitle" hidden><div class="settlement-dialog pdf-view-dialog"><div class="settlement-heading"><h2 id="itineraryTitle">西班牙之旅・電子行程測試</h2><button type="button" class="secondary" id="closeItineraryBtn">返回帳本</button></div><p class="settlement-intro">想以原 PDF 的版面查看，請從自己的裝置選取「20261001-20261011.pdf」。檔案只會在這台裝置的瀏覽器中開啟，不會上傳或儲存到網站。</p><label class="pdf-pick">選取原始 PDF<input id="itineraryPdfInput" type="file" accept="application/pdf,.pdf"></label><p id="itineraryPdfStatus" class="meta" role="status">尚未選取 PDF。若在手機上找不到檔案，請先將 PDF 存到手機的「檔案」中。</p><a id="itineraryPdfOpen" class="pdf-open-link" href="#" target="_blank" rel="noopener" hidden>在新分頁開啟原 PDF</a><div id="itineraryPdfFrameWrap" class="pdf-frame-wrap" hidden><iframe id="itineraryPdfFrame" title="原始行程 PDF"></iframe></div><details class="pdf-summary"><summary>查看不含敏感資訊的文字摘要</summary><div class="itinerary-notice"><strong>集合提醒</strong><span>10/1 17:00・高雄小港國際機場</span><span>出發前確認護照、機票與每個人的景點票券。</span></div><div id="itineraryList"></div></details></div></section>
+<section class="settlement-screen" id="itineraryScreen" role="dialog" aria-modal="true" aria-labelledby="itineraryTitle" hidden><div class="settlement-dialog pdf-view-dialog"><div class="settlement-heading"><h2 id="itineraryTitle">西班牙之旅・電子行程測試</h2><button type="button" class="secondary" id="closeItineraryBtn">返回帳本</button></div><p class="settlement-intro">想以原 PDF 的版面查看，請從自己的裝置選取「20261001-20261011.pdf」。檔案只會在這台裝置的瀏覽器中開啟，不會上傳或儲存到網站。</p><label class="pdf-pick">選取原始 PDF<input id="itineraryPdfInput" type="file" accept="application/pdf,.pdf"></label><p id="itineraryPdfStatus" class="meta" role="status">尚未選取 PDF。若在手機上找不到檔案，請先將 PDF 存到手機的「檔案」中。</p><a id="itineraryPdfOpen" class="pdf-open-link" href="#" target="_blank" rel="noopener" hidden>在新分頁開啟原 PDF</a><div class="pdf-mode-switch" id="itineraryModeSwitch" hidden><button type="button" id="itineraryBookMode" class="secondary">📖 書本翻頁</button><button type="button" id="itineraryPdfMode" class="secondary" hidden>📄 原始 PDF 檢視</button></div><div class="book-view" id="itineraryBookView" hidden><div class="book-toolbar"><button type="button" class="secondary" id="bookPrev">← 上一頁</button><span id="bookPageStatus" role="status">準備中…</span><button type="button" class="secondary" id="bookNext">下一頁 →</button></div><div class="book-spread" id="bookSpread"><canvas id="bookLeft" aria-label="左側 PDF 頁面"></canvas><canvas id="bookRight" aria-label="右側 PDF 頁面"></canvas></div><p class="meta">手機一次顯示一頁，電腦可並排顯示兩頁。也可左右滑動翻頁。</p></div><div id="itineraryPdfFrameWrap" class="pdf-frame-wrap" hidden><iframe id="itineraryPdfFrame" title="原始行程 PDF"></iframe></div><details class="pdf-summary"><summary>查看不含敏感資訊的文字摘要</summary><div class="itinerary-notice"><strong>集合提醒</strong><span>10/1 17:00・高雄小港國際機場</span><span>出發前確認護照、機票與每個人的景點票券。</span></div><div id="itineraryList"></div></details></div></section>
 <section class="settlement-screen" id="settlementScreen" role="dialog" aria-modal="true" aria-labelledby="settlementTitle" hidden><div class="settlement-dialog"><div class="settlement-heading"><h2 id="settlementTitle">西班牙之旅・最終結算</h2><button type="button" class="secondary" id="closeSettlementBtn">返回帳本</button></div><p class="settlement-intro">一次查看每位旅伴的旅費明細與最少筆數付款安排；可分次記錄已付款金額。</p><h2>個人旅費結算</h2><div class="summary-grid" id="balances"></div><h2 style="margin-top:28px">最佳付款方式</h2><div id="settlements"></div><h2 style="margin-top:28px">分段結清紀錄</h2><div id="settlementHistory"></div></div></section>
 <section class="settlement-screen" id="chartsScreen" role="dialog" aria-modal="true" aria-labelledby="chartsTitle" hidden><div class="settlement-dialog"><div class="settlement-heading"><h2 id="chartsTitle">西班牙之旅・旅程統計圖表</h2><button type="button" class="secondary" id="closeChartsBtn">返回帳本</button></div><p class="settlement-intro">查看整趟旅程的支出比例與分類花費。</p><div id="tripCharts"></div></div></section>
 <section class="settlement-screen" id="editExpenseScreen" role="dialog" aria-modal="true" aria-labelledby="editExpenseHeading" hidden><div class="settlement-dialog"><div class="settlement-heading"><h2 id="editExpenseHeading">編輯支出</h2><button type="button" class="secondary" id="closeEditExpenseBtn">取消</button></div><p class="settlement-intro">修改後會同步更新所有旅伴的帳本與結算結果。</p><form id="editExpenseForm"><div class="field"><label for="editExpenseItem">支出項目</label><input id="editExpenseItem" required></div><div class="field"><label for="editExpenseCategory">支出分類</label><select id="editExpenseCategory"></select></div><div class="field"><label for="editExpenseAmount">支出總金額</label><input id="editExpenseAmount" type="text" inputmode="decimal" required></div><div class="field"><label>付款人</label><div id="editPayerRows"></div><button type="button" class="secondary small" id="editAddPayerBtn">＋ 新增付款人</button><div class="split-status" id="editPayerStatus"></div></div><div class="field"><label>參與分攤的人</label><div class="checks" id="editSplitPeople"></div></div><div class="field"><label for="editSplitMode">分攤方式</label><select id="editSplitMode"><option value="equal">平均分攤</option><option value="custom">自訂每人金額</option></select></div><div class="field" id="editCustomSplitField" hidden><label>每人分攤金額</label><div id="editCustomSplits"></div><div class="split-status" id="editSplitStatus"></div></div><button type="submit">儲存更新</button></form></div></section>
@@ -236,11 +236,59 @@ $('#editSplitPeople').addEventListener('change',()=>renderEditCustomSplits());
 $('#editCustomSplits').addEventListener('input',event=>{if(event.target.dataset.editShareId)formatAmountInput(event.target);updateEditSplitStatus()});
 const pdfItineraryDays=[["10/1","出發・高雄 → 香港","17:00 高雄小港機場集合","19:10–20:50 國泰航空 CX459，高雄 → 香港","來源：PDF 第 3、5 頁"],["10/2","馬德里 → 塞維利亞","00:45–09:15 國泰航空 CX315，香港 → 馬德里","約 12:25 搭乘 Iryo 高鐵；約 15:04 抵達塞維利亞","入境、領行李、前往 Atocha 車站；住宿放行李後可前往都市陽傘，晚間自由安排。","來源：PDF 第 3、7 頁"],["10/3","塞維利亞市區","塞維利亞主教堂、鬥牛廣場、黃金塔河畔","14:00 塞維利亞王宮（PDF 註記已購票）","西班牙廣場","來源：PDF 第 3、8 頁"],["10/4","塞維利亞 → 馬德里","約 12:25 搭乘 Iryo 高鐵；約 15:02 抵達馬德里","住宿放行李後：太陽門廣場、馬約爾廣場、聖米格爾市場","來源：PDF 第 3、9 頁"],["10/5","馬德里 → 塞哥維亞一日遊","08:30 出發，經 Chamartín 車站前往塞哥維亞","塞哥維亞城堡、主教座堂、烤乳豬、水道橋","返回馬德里後可逛格蘭大道。","來源：PDF 第 4、10–11 頁"],["10/6","馬德里 → 巴塞隆納","上午：馬德里王宮","約 12:22 搭乘 Iryo 高鐵；約 15:39 抵達巴塞隆納","17:30 巴特略之家（PDF 註記已購票）","來源：PDF 第 4、12 頁"],["10/7","巴塞隆納・聖家堂","上午聖家堂（PDF 註記 09:30，但每人票券時間可能不同，請以個人票面為準）","聖十字聖保羅醫院；維森斯之家或焦糖山；格拉西亞大道","來源：PDF 第 4、13–14 頁"],["10/8","巴塞隆納・奎爾公園","09:30 奎爾公園（PDF 註記已購票）","聖卡特琳娜市場、輕吻的牆、巴塞隆納主教座堂、主教橋","巴塞隆內塔海灘、貝爾港、哥倫布紀念碑","來源：PDF 第 4、15–16 頁"],["10/9","巴塞隆納市區","米拉之家、聖約瑟市場、加泰羅尼亞廣場","西班牙廣場／魔幻噴泉（演出時間請當日確認）","來源：PDF 第 4、17 頁"],["10/10","返程・巴塞隆納 → 香港","13:00 國泰航空 CX318，巴塞隆納 → 香港","來源：PDF 第 3–4 頁"],["10/11","抵達・香港 → 高雄","08:35–10:10 國泰航空 CX432，香港 → 高雄","來源：PDF 第 3–4 頁"]];
 function renderItinerary(){$('#itineraryList').innerHTML=pdfItineraryDays.map((day,index)=>`<article class="pdf-day"><div class="pdf-day-date"><span>DAY ${index+1}</span><strong>${esc(day[0])}</strong></div><div class="pdf-day-body"><h3>${esc(day[1])}</h3><ul>${day.slice(2,-1).map(detail=>`<li>${esc(detail)}</li>`).join('')}</ul><div class="meta">${esc(day.at(-1))}</div></div></article>`).join('')}
-let itineraryPdfUrl=null;
+let itineraryPdfUrl=null,bookDoc=null,bookPage=1,bookPdfJs=null,bookRenderId=0;
 function openItinerary(){$('#itineraryScreen').hidden=false}
 function closeItinerary(){$('#itineraryScreen').hidden=true}
+async function renderBookPage(){
+ if(!bookDoc)return;
+ const id=++bookRenderId,wide=innerWidth>700,total=bookDoc.numPages;
+ bookPage=Math.max(1,Math.min(bookPage,total));
+ $('#bookPrev').disabled=bookPage===1;
+ $('#bookNext').disabled=bookPage+(wide?1:0)>=total;
+ $('#bookPageStatus').textContent='第 '+bookPage+(wide&&bookPage<total?'–'+(bookPage+1):'')+' 頁／共 '+total+' 頁';
+ $('#bookRight').hidden=!wide||bookPage===total;
+ const items=[[bookPage,$('#bookLeft')],...(wide&&bookPage<total?[[bookPage+1,$('#bookRight')]]:[])];
+ try{
+  for(const [number,canvas] of items){
+   const page=await bookDoc.getPage(number);if(id!==bookRenderId)return;
+   const base=page.getViewport({scale:1});
+   const available=Math.max(260,Math.min(wide?500:650,(innerWidth-90)/(wide?2:1)));
+   const scale=Math.min(2,available/base.width)*Math.min(devicePixelRatio||1,2);
+   const viewport=page.getViewport({scale});
+   canvas.width=Math.ceil(viewport.width);canvas.height=Math.ceil(viewport.height);
+   await page.render({canvasContext:canvas.getContext('2d'),viewport}).promise;
+   if(id!==bookRenderId)return;
+  }
+ }catch(error){$('#bookPageStatus').textContent='翻頁顯示失敗，請改用原始 PDF 檢視';console.error(error)}
+}
+function turnBook(delta){
+ if(!bookDoc)return;
+ const step=innerWidth>700?2:1,next=Math.max(1,Math.min(bookDoc.numPages,bookPage+delta*step));
+ if(next===bookPage)return;
+ bookPage=next;$('#bookSpread').classList.remove('turning');void $('#bookSpread').offsetWidth;$('#bookSpread').classList.add('turning');renderBookPage();
+}
+$('#bookPrev').addEventListener('click',()=>turnBook(-1));
+$('#bookNext').addEventListener('click',()=>turnBook(1));
+let bookTouchStart=null;
+$('#bookSpread').addEventListener('touchstart',event=>{bookTouchStart=event.touches[0]?.clientX??null},{passive:true});
+$('#bookSpread').addEventListener('touchend',event=>{if(bookTouchStart===null)return;const distance=(event.changedTouches[0]?.clientX??bookTouchStart)-bookTouchStart;if(Math.abs(distance)>50)turnBook(distance<0?1:-1);bookTouchStart=null},{passive:true});
+$('#itineraryPdfMode').addEventListener('click',()=>{$('#itineraryBookView').hidden=true;$('#itineraryPdfFrameWrap').hidden=false;$('#itineraryBookMode').hidden=false;$('#itineraryPdfMode').hidden=true});
+$('#itineraryBookMode').addEventListener('click',async()=>{
+ $('#itineraryBookView').hidden=false;$('#itineraryPdfFrameWrap').hidden=true;$('#itineraryBookMode').hidden=true;$('#itineraryPdfMode').hidden=false;
+ if(bookDoc){renderBookPage();return}
+ $('#bookPageStatus').textContent='正在準備書本翻頁…';
+ try{
+  bookPdfJs??=await import('https://cdn.jsdelivr.net/npm/pdfjs-dist@6.3.289/build/pdf.mjs');
+  bookPdfJs.GlobalWorkerOptions.workerSrc='https://cdn.jsdelivr.net/npm/pdfjs-dist@6.3.289/build/pdf.worker.mjs';
+  const file=$('#itineraryPdfInput').files[0];if(!file)return;
+  bookDoc=await bookPdfJs.getDocument({data:new Uint8Array(await file.arrayBuffer())}).promise;
+  bookPage=1;renderBookPage();
+ }catch(error){$('#bookPageStatus').textContent='書本模式無法載入，請切換回原始 PDF 檢視';console.error(error)}
+});
 $('#itineraryPdfInput').addEventListener('change',event=>{
  const file=event.target.files?.[0];
+ ++bookRenderId;if(bookDoc){bookDoc.destroy();bookDoc=null}
+ $('#itineraryBookView').hidden=true;$('#itineraryModeSwitch').hidden=true;$('#itineraryBookMode').hidden=false;$('#itineraryPdfMode').hidden=true;
  if(itineraryPdfUrl){$('#itineraryPdfFrame').src='about:blank';URL.revokeObjectURL(itineraryPdfUrl);itineraryPdfUrl=null}
  $('#itineraryPdfFrameWrap').hidden=true;$('#itineraryPdfOpen').hidden=true;
  if(!file)return;
@@ -250,8 +298,10 @@ $('#itineraryPdfInput').addEventListener('change',event=>{
  $('#itineraryPdfOpen').href=itineraryPdfUrl;
  $('#itineraryPdfOpen').hidden=false;
  $('#itineraryPdfFrameWrap').hidden=false;
- $('#itineraryPdfStatus').textContent='已選取 '+file.name+'。檔案只在目前瀏覽器中開啟，沒有上傳。';
+ $('#itineraryModeSwitch').hidden=false;
+ $('#itineraryPdfStatus').textContent='已選取 '+file.name+'。可切換成書本翻頁模式；檔案沒有上傳。';
 });
+window.addEventListener('resize',()=>{if(bookDoc&&!$('#itineraryBookView').hidden)renderBookPage()});
 window.addEventListener('pagehide',()=>{if(itineraryPdfUrl)URL.revokeObjectURL(itineraryPdfUrl)});
 $('#openItineraryBtn').addEventListener('click',openItinerary);
 $('#closeItineraryBtn').addEventListener('click',closeItinerary);
