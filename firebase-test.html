@@ -4,7 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="preconnect" href="https://www.gstatic.com" crossorigin>
-  <title>西班牙之旅｜旅遊分帳</title>
+  <title>西班牙之旅｜電子行程測試版</title>
+  <meta name="robots" content="noindex,nofollow">
   <style>
     :root{--bg:#fff9ee;--card:#fff;--ink:#34211d;--muted:#796763;--accent:#bd2433;--accent2:#e4a819;--danger:#c33235;--line:#eee0d5;--good:#22815a;--shadow:0 12px 36px rgba(105,50,32,.09)}
     *{box-sizing:border-box}body{margin:0;background:linear-gradient(135deg,#fff5ed,#fff9dd 48%,#fff5f1);color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI","Noto Sans TC",sans-serif;min-height:100vh}
@@ -83,10 +84,12 @@
     @media(max-width:600px){.itinerary-nav{align-items:flex-start;flex-direction:column}.itinerary-item-head{flex-wrap:wrap}}
   
     .itinerary-notice{display:grid;gap:5px;background:#fff0d1;border-radius:14px;padding:15px;margin-bottom:16px}.itinerary-notice strong{color:var(--accent)}.pdf-day{display:grid;grid-template-columns:86px minmax(0,1fr);gap:14px;padding:18px 0;border-bottom:1px solid var(--line)}.pdf-day:last-child{border-bottom:0}.pdf-day-date{display:flex;flex-direction:column;gap:4px;color:var(--accent)}.pdf-day-date span{font-size:12px;font-weight:800;letter-spacing:.06em}.pdf-day-date strong{font-size:22px}.pdf-day-body h3{margin:0 0 8px;font-size:17px}.pdf-day-body ul{margin:0 0 7px;padding-left:20px;line-height:1.65}.pdf-day-body li{margin-bottom:3px}.pdf-day-body .meta{font-size:12px}@media(max-width:520px){.pdf-day{grid-template-columns:1fr;gap:6px}.pdf-day-date{flex-direction:row;align-items:baseline;gap:9px}}
+      .test-banner{display:flex;align-items:center;gap:12px;padding:12px 16px;margin:0 0 18px;border:1px solid #e4a819;border-radius:12px;background:#fff0cf;color:#573b15}.test-banner strong{white-space:nowrap}@media(max-width:600px){.test-banner{align-items:flex-start;flex-direction:column;gap:4px}}
   </style>
 </head>
 <body>
 <main class="wrap">
+  <div class="test-banner" role="status"><strong>電子行程測試版</strong><span>此頁與正式分帳共用帳本資料；請勿在此測試新增、修改或刪除真實帳目，也不要放入票券憑證。</span></div>
   <header class="hero"><div><h1>西班牙之旅 <svg class="spain-flag" viewBox="0 0 60 40" role="img" aria-label="西班牙國旗"><rect width="60" height="40" fill="#c60b1e"/><rect y="10" width="60" height="20" fill="#ffc400"/><path d="M17 15h8v9c0 3-2 5-4 6-2-1-4-3-4-6z" fill="#c60b1e"/><path d="M19 14h4v2h-4z" fill="#a47b14"/></svg></h1><p>多人共用旅遊帳本 · <span id="syncStatus">正在連線…</span></p></div><div class="toolbar"><button id="calculateBtn">最終結算</button><button class="secondary" id="openChartsBtn">旅程統計圖表</button><button class="secondary" id="exportStatsBtn">匯出旅程統計</button></div></header>
   <div class="itinerary-nav"><button type="button" class="secondary" id="openItineraryBtn">🗓️ 電子行程</button><span>依照既有 PDF 整理・免逐筆輸入</span></div>
   <div class="grid">
